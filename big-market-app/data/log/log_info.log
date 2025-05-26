@@ -1,0 +1,9 @@
+25-05-26.18:45:56.045 [main            ] INFO  AwardDaoTest           - Starting AwardDaoTest using Java 1.8.0_391 on DESKTOP-OVCPQB1 with PID 31940 (started by yc in E:\Git\java-project\big-market\big-market-app)
+25-05-26.18:45:56.046 [main            ] INFO  AwardDaoTest           - The following 1 profile is active: "dev"
+25-05-26.18:45:58.302 [main            ] INFO  AwardDaoTest           - Started AwardDaoTest in 2.727 seconds (JVM running for 3.885)
+25-05-26.18:51:22.691 [main            ] INFO  AwardDaoTest           - Starting AwardDaoTest using Java 1.8.0_391 on DESKTOP-OVCPQB1 with PID 31084 (started by yc in E:\Git\java-project\big-market\big-market-app)
+25-05-26.18:51:22.692 [main            ] INFO  AwardDaoTest           - The following 1 profile is active: "dev"
+25-05-26.18:51:24.539 [main            ] INFO  AwardDaoTest           - Started AwardDaoTest in 2.263 seconds (JVM running for 3.181)
+25-05-26.18:52:40.314 [main            ] INFO  AwardDaoTest           - Starting AwardDaoTest using Java 1.8.0_391 on DESKTOP-OVCPQB1 with PID 26108 (started by yc in E:\Git\java-project\big-market\big-market-app)
+25-05-26.18:52:40.315 [main            ] INFO  AwardDaoTest           - The following 1 profile is active: "dev"
+25-05-26.18:52:42.287 [main            ] INFO  AwardDaoTest           - Started AwardDaoTest in 2.39 seconds (JVM running for 3.303)
