@@ -15,3 +15,64 @@
 25-05-27.14:39:11.029 [main            ] INFO  AwardDaoTest           - 测试结果：[{"awardConfig":"1,100","awardDesc":"用户积分【优先透彻规则范围，如果没有则走配置】","awardId":101,"awardKey":"user_credit_random"},{"awardConfig":"5","awardDesc":"OpenAI 增加使用次数","awardId":102,"awardKey":"openai_use_count"},{"awardConfig":"10","awardDesc":"OpenAI 增加使用次数","awardId":103,"awardKey":"openai_use_count"},{"awardConfig":"20","awardDesc":"OpenAI 增加使用次数","awardId":104,"awardKey":"openai_use_count"},{"awardConfig":"gpt-4","awardDesc":"OpenAI 增加模型","awardId":105,"awardKey":"openai_model"},{"awardConfig":"dall-e-2","awardDesc":"OpenAI 增加模型","awardId":106,"awardKey":"openai_model"},{"awardConfig":"dall-e-3","awardDesc":"OpenAI 增加模型","awardId":107,"awardKey":"openai_model"},{"awardConfig":"100","awardDesc":"OpenAI 增加使用次数","awardId":108,"awardKey":"openai_use_count"},{"awardConfig":"gpt-4,dall-e-2,dall-e-3","awardDesc":"OpenAI 增加模型","awardId":109,"awardKey":"openai_model"}]
 25-05-27.14:39:11.040 [SpringApplicationShutdownHook] INFO  HikariDataSource       - HikariPool-1 - Shutdown initiated...
 25-05-27.14:39:11.055 [SpringApplicationShutdownHook] INFO  HikariDataSource       - HikariPool-1 - Shutdown completed.
+25-05-27.16:44:09.692 [main            ] INFO  StrategyTest           - Starting StrategyTest using Java 1.8.0_391 on DESKTOP-OVCPQB1 with PID 31420 (started by yc in E:\Git\java-project\big-market\big-market-app)
+25-05-27.16:44:09.694 [main            ] INFO  StrategyTest           - The following 1 profile is active: "dev"
+25-05-27.16:44:10.876 [main            ] INFO  RepositoryConfigurationDelegate - Multiple Spring Data modules found, entering strict repository configuration mode
+25-05-27.16:44:10.881 [main            ] INFO  RepositoryConfigurationDelegate - Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+25-05-27.16:44:10.912 [main            ] INFO  RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 11 ms. Found 0 Redis repository interfaces.
+25-05-27.16:44:13.908 [main            ] INFO  Version                - Redisson 3.23.4
+25-05-27.16:44:15.574 [redisson-netty-2-4] INFO  MasterPubSubConnectionPool - 1 connections initialized for 127.0.0.1/127.0.0.1:16379
+25-05-27.16:44:15.592 [redisson-netty-2-13] INFO  MasterConnectionPool   - 5 connections initialized for 127.0.0.1/127.0.0.1:16379
+25-05-27.16:44:17.378 [main            ] INFO  EndpointLinksResolver  - Exposing 1 endpoint(s) beneath base path '/actuator'
+25-05-27.16:44:17.448 [main            ] INFO  StrategyTest           - Started StrategyTest in 8.204 seconds (JVM running for 9.169)
+25-05-27.16:44:17.957 [main            ] INFO  StrategyTest           - 测试结果：101
+25-05-27.16:44:44.761 [main            ] INFO  StrategyTest           - Starting StrategyTest using Java 1.8.0_391 on DESKTOP-OVCPQB1 with PID 28588 (started by yc in E:\Git\java-project\big-market\big-market-app)
+25-05-27.16:44:44.763 [main            ] INFO  StrategyTest           - The following 1 profile is active: "dev"
+25-05-27.16:44:45.545 [main            ] INFO  RepositoryConfigurationDelegate - Multiple Spring Data modules found, entering strict repository configuration mode
+25-05-27.16:44:45.548 [main            ] INFO  RepositoryConfigurationDelegate - Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+25-05-27.16:44:45.576 [main            ] INFO  RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 12 ms. Found 0 Redis repository interfaces.
+25-05-27.16:44:47.994 [main            ] INFO  Version                - Redisson 3.23.4
+25-05-27.16:44:49.603 [redisson-netty-2-4] INFO  MasterPubSubConnectionPool - 1 connections initialized for 127.0.0.1/127.0.0.1:16379
+25-05-27.16:44:49.621 [redisson-netty-2-13] INFO  MasterConnectionPool   - 5 connections initialized for 127.0.0.1/127.0.0.1:16379
+25-05-27.16:44:51.250 [main            ] INFO  EndpointLinksResolver  - Exposing 1 endpoint(s) beneath base path '/actuator'
+25-05-27.16:44:51.307 [main            ] INFO  StrategyTest           - Started StrategyTest in 6.969 seconds (JVM running for 7.911)
+25-05-27.16:44:51.745 [main            ] INFO  HikariDataSource       - HikariPool-1 - Starting...
+25-05-27.16:44:53.555 [main            ] INFO  HikariDataSource       - HikariPool-1 - Start completed.
+25-05-27.16:44:53.788 [SpringApplicationShutdownHook] INFO  HikariDataSource       - HikariPool-1 - Shutdown initiated...
+25-05-27.16:44:53.803 [SpringApplicationShutdownHook] INFO  HikariDataSource       - HikariPool-1 - Shutdown completed.
+25-05-27.16:45:07.487 [main            ] INFO  StrategyTest           - Starting StrategyTest using Java 1.8.0_391 on DESKTOP-OVCPQB1 with PID 4796 (started by yc in E:\Git\java-project\big-market\big-market-app)
+25-05-27.16:45:07.488 [main            ] INFO  StrategyTest           - The following 1 profile is active: "dev"
+25-05-27.16:45:08.336 [main            ] INFO  RepositoryConfigurationDelegate - Multiple Spring Data modules found, entering strict repository configuration mode
+25-05-27.16:45:08.340 [main            ] INFO  RepositoryConfigurationDelegate - Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+25-05-27.16:45:08.366 [main            ] INFO  RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 10 ms. Found 0 Redis repository interfaces.
+25-05-27.16:45:10.800 [main            ] INFO  Version                - Redisson 3.23.4
+25-05-27.16:45:12.443 [redisson-netty-2-4] INFO  MasterPubSubConnectionPool - 1 connections initialized for 127.0.0.1/127.0.0.1:16379
+25-05-27.16:45:12.467 [redisson-netty-2-13] INFO  MasterConnectionPool   - 5 connections initialized for 127.0.0.1/127.0.0.1:16379
+25-05-27.16:45:14.098 [main            ] INFO  EndpointLinksResolver  - Exposing 1 endpoint(s) beneath base path '/actuator'
+25-05-27.16:45:14.160 [main            ] INFO  StrategyTest           - Started StrategyTest in 7.093 seconds (JVM running for 8.001)
+25-05-27.16:56:18.941 [main            ] INFO  StrategyTest           - Starting StrategyTest using Java 1.8.0_391 on DESKTOP-OVCPQB1 with PID 20000 (started by yc in E:\Git\java-project\big-market\big-market-app)
+25-05-27.16:56:18.942 [main            ] INFO  StrategyTest           - The following 1 profile is active: "dev"
+25-05-27.16:56:19.777 [main            ] INFO  RepositoryConfigurationDelegate - Multiple Spring Data modules found, entering strict repository configuration mode
+25-05-27.16:56:19.781 [main            ] INFO  RepositoryConfigurationDelegate - Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+25-05-27.16:56:19.809 [main            ] INFO  RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 11 ms. Found 0 Redis repository interfaces.
+25-05-27.16:56:22.224 [main            ] INFO  Version                - Redisson 3.23.4
+25-05-27.16:56:23.887 [redisson-netty-2-4] INFO  MasterPubSubConnectionPool - 1 connections initialized for 127.0.0.1/127.0.0.1:16379
+25-05-27.16:56:23.920 [redisson-netty-2-13] INFO  MasterConnectionPool   - 5 connections initialized for 127.0.0.1/127.0.0.1:16379
+25-05-27.16:56:25.841 [main            ] INFO  EndpointLinksResolver  - Exposing 1 endpoint(s) beneath base path '/actuator'
+25-05-27.16:56:25.913 [main            ] INFO  StrategyTest           - Started StrategyTest in 7.39 seconds (JVM running for 8.455)
+25-05-27.16:56:26.316 [main            ] INFO  HikariDataSource       - HikariPool-1 - Starting...
+25-05-27.16:56:27.990 [main            ] INFO  HikariDataSource       - HikariPool-1 - Start completed.
+25-05-27.16:56:28.068 [main            ] INFO  StrategyTest           - 测试结果：true
+25-05-27.16:56:28.100 [SpringApplicationShutdownHook] INFO  HikariDataSource       - HikariPool-1 - Shutdown initiated...
+25-05-27.16:56:28.116 [SpringApplicationShutdownHook] INFO  HikariDataSource       - HikariPool-1 - Shutdown completed.
+25-05-27.16:56:39.650 [main            ] INFO  StrategyTest           - Starting StrategyTest using Java 1.8.0_391 on DESKTOP-OVCPQB1 with PID 29976 (started by yc in E:\Git\java-project\big-market\big-market-app)
+25-05-27.16:56:39.652 [main            ] INFO  StrategyTest           - The following 1 profile is active: "dev"
+25-05-27.16:56:40.465 [main            ] INFO  RepositoryConfigurationDelegate - Multiple Spring Data modules found, entering strict repository configuration mode
+25-05-27.16:56:40.469 [main            ] INFO  RepositoryConfigurationDelegate - Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+25-05-27.16:56:40.497 [main            ] INFO  RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 11 ms. Found 0 Redis repository interfaces.
+25-05-27.16:56:42.939 [main            ] INFO  Version                - Redisson 3.23.4
+25-05-27.16:56:44.502 [redisson-netty-2-4] INFO  MasterPubSubConnectionPool - 1 connections initialized for 127.0.0.1/127.0.0.1:16379
+25-05-27.16:56:44.519 [redisson-netty-2-13] INFO  MasterConnectionPool   - 5 connections initialized for 127.0.0.1/127.0.0.1:16379
+25-05-27.16:56:46.224 [main            ] INFO  EndpointLinksResolver  - Exposing 1 endpoint(s) beneath base path '/actuator'
+25-05-27.16:56:46.280 [main            ] INFO  StrategyTest           - Started StrategyTest in 7.047 seconds (JVM running for 8.003)
+25-05-27.16:56:46.669 [main            ] INFO  StrategyTest           - 测试结果：101 - 奖品ID值
