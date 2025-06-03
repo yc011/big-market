@@ -10,5 +10,7 @@ public interface IStrategyDispatch {
      * @param strategyId 策略ID
      * @return 装配结果
      */
-    boolean assembleLotteryStrategy(Long strategyId);
+    Integer getRandomAwardId(Long strategyId);
+
+    Integer getRandomAwardId(Long strategyId, String ruleWeightValue);
 }
