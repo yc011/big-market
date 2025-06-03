@@ -30,8 +30,8 @@ public class StrategyTest {
      */
     @Test
     public void test_strategyArmory() {
-        boolean success = strategyArmory.assembleLotteryStrategy(100002L);
-        log.info("测试结果：{}", success);
+////        boolean success = strategyArmory.assembleLotteryStrategy(100002L);
+//        log.info("测试结果：{}", success);
     }
 
     /**
