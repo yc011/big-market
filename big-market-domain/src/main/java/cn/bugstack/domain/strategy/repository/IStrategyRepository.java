@@ -1,6 +1,7 @@
 package cn.bugstack.domain.strategy.repository;
 
 import cn.bugstack.domain.strategy.model.entity.StrategyAwardEntity;
+import cn.bugstack.domain.strategy.model.entity.StrategyEntity;
 
 import java.math.BigDecimal;
 import java.util.List;
@@ -20,4 +21,5 @@ public interface IStrategyRepository {
 
     int getRateRange(Long strategyId);
 
+    StrategyEntity queryStrategyEntityByStrategyId(Long strategyId);
 }

@@ -1,6 +1,7 @@
 package cn.bugstack.domain.strategy.service.armory;
 
 import cn.bugstack.domain.strategy.model.entity.StrategyAwardEntity;
+import cn.bugstack.domain.strategy.model.entity.StrategyEntity;
 import cn.bugstack.domain.strategy.repository.IStrategyRepository;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
@@ -28,6 +29,7 @@ public class StrategyArmoryDispatch implements IStrategyArmory,IStrategyDispatch
         assembleLotteryStrategy(String.valueOf(strategyId),strategyAwardEntities);
 
         //2.权重策略配置 适用于rule_weight 权重规则配置
+        StrategyEntity strategyEntity = repository.queryStrategyEntityByStrategyId(strategyId);
         return true;
     }
 

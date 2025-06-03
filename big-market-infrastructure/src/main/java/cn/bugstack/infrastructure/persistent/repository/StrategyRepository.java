@@ -1,6 +1,7 @@
 package cn.bugstack.infrastructure.persistent.repository;
 
 import cn.bugstack.domain.strategy.model.entity.StrategyAwardEntity;
+import cn.bugstack.domain.strategy.model.entity.StrategyEntity;
 import cn.bugstack.domain.strategy.repository.IStrategyRepository;
 import cn.bugstack.infrastructure.persistent.dao.IStrategyAwardDao;
 import cn.bugstack.infrastructure.persistent.po.StrategyAward;
@@ -67,6 +68,11 @@ public class StrategyRepository implements IStrategyRepository {
     @Override
     public int getRateRange(Long strategyId) {
         return redisService.getValue(Constants.RedisKey.STRATEGY_RATE_RANGE_KEY + strategyId);
+    }
+
+    @Override
+    public StrategyEntity queryStrategyEntityByStrategyId(Long strategyId) {
+        return null;
     }
 
 }
