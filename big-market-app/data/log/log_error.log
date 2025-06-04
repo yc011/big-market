@@ -1,0 +1,1 @@
+25-06-04.15:59:47.807 [main            ] WARN  DefaultRaffleStrategy  - Warning: logics parameter is null for raffleFactorEntity: RaffleFactorEntity(userId=xiaofuge, strategyId=100001)

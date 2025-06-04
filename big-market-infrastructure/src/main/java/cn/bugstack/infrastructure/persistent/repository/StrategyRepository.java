@@ -16,6 +16,7 @@ import org.springframework.stereotype.Repository;
 
 import javax.annotation.Resource;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -78,16 +79,12 @@ public class StrategyRepository implements IStrategyRepository {
         return getRateRange(String.valueOf(strategyId));
     }
 
-
     @Override
     public int getRateRange(String key) {
-        Integer rateRange = redisService.getValue(Constants.RedisKey.STRATEGY_RATE_RANGE_KEY + key);
-        if (rateRange == null) {
-            throw new RuntimeException("未找到策略概率查找表，key=" + key);
-        }
-        return rateRange;
+        Integer value = (Integer) redisService.getValue(key);
+        if (value == null) throw new RuntimeException("未找到策略概率查找表，key=" + key);
+        return value;
     }
-
     @Override
     public StrategyEntity queryStrategyEntityByStrategyId(Long strategyId) {
         // 优先从缓存获取
@@ -118,6 +115,15 @@ public class StrategyRepository implements IStrategyRepository {
                 .ruleValue(strategyRuleRes.getRuleValue())
                 .ruleDesc(strategyRuleRes.getRuleDesc())
                 .build();
+    }
+
+    @Override
+    public String queryStrategyRuleValue(Long strategyId, Integer awardId, String ruleModel) {
+        StrategyRule strategyRule = new StrategyRule();
+        strategyRule.setStrategyId(strategyId);
+        strategyRule.setAwardId(awardId);
+        strategyRule.setRuleModel(ruleModel);
+        return strategyRuleDao.queryStrategyRuleValue(strategyRule);
     }
 
 }

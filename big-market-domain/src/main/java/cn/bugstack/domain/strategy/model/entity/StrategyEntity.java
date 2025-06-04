@@ -30,7 +30,6 @@ public class StrategyEntity {
         return ruleModels.split(Constants.SPLIT);
     }
 
-
     public String getRuleWeight() {
         String[] ruleModels = this.ruleModels();
         if (ruleModels == null) return null;
@@ -39,6 +38,5 @@ public class StrategyEntity {
         }
         return null;
     }
-
 
 }
