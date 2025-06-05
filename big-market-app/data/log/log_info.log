@@ -168,3 +168,26 @@
 25-06-04.15:59:47.325 [main            ] INFO  EndpointLinksResolver  - Exposing 1 endpoint(s) beneath base path '/actuator'
 25-06-04.15:59:47.386 [main            ] INFO  RaffleStrategyTest     - Started RaffleStrategyTest in 7.206 seconds (JVM running for 8.155)
 25-06-04.15:59:47.807 [main            ] WARN  DefaultRaffleStrategy  - Warning: logics parameter is null for raffleFactorEntity: RaffleFactorEntity(userId=xiaofuge, strategyId=100001)
+25-06-05.17:51:01.624 [main            ] INFO  LogicChainTest         - Starting LogicChainTest using Java 1.8.0_391 on DESKTOP-OVCPQB1 with PID 29584 (started by yc in E:\Git\java-project\big-market\big-market-app)
+25-06-05.17:51:01.626 [main            ] INFO  LogicChainTest         - The following 1 profile is active: "dev"
+25-06-05.17:51:02.774 [main            ] INFO  RepositoryConfigurationDelegate - Multiple Spring Data modules found, entering strict repository configuration mode
+25-06-05.17:51:02.778 [main            ] INFO  RepositoryConfigurationDelegate - Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+25-06-05.17:51:02.818 [main            ] INFO  RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 18 ms. Found 0 Redis repository interfaces.
+25-06-05.17:51:05.885 [main            ] INFO  Version                - Redisson 3.23.4
+25-06-05.17:51:07.675 [redisson-netty-2-4] INFO  MasterPubSubConnectionPool - 1 connections initialized for 127.0.0.1/127.0.0.1:16379
+25-06-05.17:51:07.697 [redisson-netty-2-13] INFO  MasterConnectionPool   - 5 connections initialized for 127.0.0.1/127.0.0.1:16379
+25-06-05.17:51:09.877 [main            ] INFO  EndpointLinksResolver  - Exposing 1 endpoint(s) beneath base path '/actuator'
+25-06-05.17:51:09.949 [main            ] INFO  LogicChainTest         - Started LogicChainTest in 8.819 seconds (JVM running for 10.11)
+25-06-05.17:51:10.582 [main            ] INFO  LogicChainTest         - 测试结果：true
+25-06-05.17:51:10.622 [main            ] INFO  HikariDataSource       - HikariPool-1 - Starting...
+25-06-05.17:51:12.860 [main            ] INFO  HikariDataSource       - HikariPool-1 - Start completed.
+25-06-05.17:51:12.930 [main            ] INFO  LogicChainTest         - 测试结果：true
+25-06-05.17:51:12.941 [main            ] INFO  LogicChainTest         - 测试结果：true
+25-06-05.17:51:13.047 [main            ] INFO  LogicChainTest         - 测试结果：true
+25-06-05.17:51:13.062 [main            ] INFO  LogicChainTest         - 测试结果：true
+25-06-05.17:51:13.075 [main            ] INFO  LogicChainTest         - 测试结果：true
+25-06-05.17:51:13.163 [main            ] INFO  LogicChainTest         - 测试结果：true
+25-06-05.17:51:13.175 [main            ] INFO  LogicChainTest         - 测试结果：true
+25-06-05.17:51:13.187 [main            ] INFO  LogicChainTest         - 测试结果：true
+25-06-05.17:51:13.241 [SpringApplicationShutdownHook] INFO  HikariDataSource       - HikariPool-1 - Shutdown initiated...
+25-06-05.17:51:13.260 [SpringApplicationShutdownHook] INFO  HikariDataSource       - HikariPool-1 - Shutdown completed.
