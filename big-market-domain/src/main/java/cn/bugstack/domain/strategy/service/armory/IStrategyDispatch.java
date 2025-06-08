@@ -1,16 +1,34 @@
 package cn.bugstack.domain.strategy.service.armory;
 
 /**
- * 策略接口调度
+ * @author Fuzhengwei bugstack.cn @小傅哥
+ * @description 策略抽奖调度
+ * @create 2023-12-31 15:15
  */
 public interface IStrategyDispatch {
+
     /**
-     * 装配抽奖策略配置「触发的时机可以为活动审核通过后进行调用」
+     * 获取抽奖策略装配的随机结果
      *
      * @param strategyId 策略ID
-     * @return 装配结果
+     * @return 抽奖结果
      */
     Integer getRandomAwardId(Long strategyId);
 
+    /**
+     * 获取抽奖策略装配的随机结果
+     *
+     * @param strategyId 权重ID
+     * @return 抽奖结果
+     */
     Integer getRandomAwardId(Long strategyId, String ruleWeightValue);
+
+    /**
+     * 获取抽奖策略装配的随机结果
+     *
+     * @param key = strategyId + _ + ruleWeightValue；
+     * @return 抽奖结果
+     */
+    Integer getRandomAwardId(String key);
+
 }
