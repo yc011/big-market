@@ -106,6 +106,12 @@
                 <artifactId>redisson-spring-boot-starter</artifactId>
                 <version>3.26.0</version>
             </dependency>
+            <dependency>
+                <groupId>cn.bugstack.middleware</groupId>
+                <artifactId>db-router-spring-boot-starter</artifactId>
+                <version>1.0.2</version>
+            </dependency>
+
 
             <!-- 工程模块 -->
             <dependency>
