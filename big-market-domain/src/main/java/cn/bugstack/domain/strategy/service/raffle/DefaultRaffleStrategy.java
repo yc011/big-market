@@ -2,6 +2,7 @@ package cn.bugstack.domain.strategy.service.raffle;
 
 import cn.bugstack.domain.strategy.model.entity.StrategyAwardEntity;
 import cn.bugstack.domain.strategy.model.valobj.RuleTreeVO;
+import cn.bugstack.domain.strategy.model.valobj.RuleWeightVO;
 import cn.bugstack.domain.strategy.model.valobj.StrategyAwardRuleModelVO;
 import cn.bugstack.domain.strategy.model.valobj.StrategyAwardStockKeyVO;
 import cn.bugstack.domain.strategy.repository.IStrategyRepository;
@@ -37,6 +38,7 @@ public class DefaultRaffleStrategy extends AbstractRaffleStrategy implements IRa
 
     @Override
     public DefaultChainFactory.StrategyAwardVO raffleLogicChain(String userId, Long strategyId) {
+        log.info("抽奖策略-责任链 userId:{} strategyId:{}", userId, strategyId);
         ILogicChain logicChain = defaultChainFactory.openLogicChain(strategyId);
         return logicChain.logic(userId, strategyId);
     }
@@ -52,6 +54,7 @@ public class DefaultRaffleStrategy extends AbstractRaffleStrategy implements IRa
         if (null == strategyAwardRuleModelVO) {
             return DefaultTreeFactory.StrategyAwardVO.builder().awardId(awardId).build();
         }
+        log.info("抽奖策略-规则树 userId:{} strategyId:{} awardId:{}", userId, strategyId, awardId);
         RuleTreeVO ruleTreeVO = repository.queryRuleTreeVOByTreeId(strategyAwardRuleModelVO.getRuleModels());
         if (null == ruleTreeVO) {
             throw new RuntimeException("存在抽奖策略配置的规则模型 Key，未在库表 rule_tree、rule_tree_node、rule_tree_line 配置对应的规则树信息 " + strategyAwardRuleModelVO.getRuleModels());
@@ -84,6 +87,17 @@ public class DefaultRaffleStrategy extends AbstractRaffleStrategy implements IRa
     @Override
     public Map<String, Integer> queryAwardRuleLockCount(String[] treeIds) {
         return repository.queryAwardRuleLockCount(treeIds);
+    }
+
+    @Override
+    public List<RuleWeightVO> queryAwardRuleWeight(Long strategyId) {
+        return repository.queryAwardRuleWeight(strategyId);
+    }
+
+    @Override
+    public List<RuleWeightVO> queryAwardRuleWeightByActivityId(Long activityId) {
+        Long strategyId = repository.queryStrategyIdByActivityId(activityId);
+        return queryAwardRuleWeight(strategyId);
     }
 
 }

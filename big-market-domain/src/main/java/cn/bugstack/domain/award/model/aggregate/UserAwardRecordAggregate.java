@@ -1,7 +1,5 @@
 package cn.bugstack.domain.award.model.aggregate;
 
-
-
 import cn.bugstack.domain.award.model.entity.TaskEntity;
 import cn.bugstack.domain.award.model.entity.UserAwardRecordEntity;
 import lombok.AllArgsConstructor;

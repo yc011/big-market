@@ -7,7 +7,7 @@
 #
 # 主机: 127.0.0.1 (MySQL 5.6.39)
 # 数据库: big_market
-# 生成时间: 2024-04-13 07:28:08 +0000
+# 生成时间: 2024-06-15 03:25:20 +0000
 # ************************************************************
 
 
@@ -35,7 +35,8 @@ CREATE TABLE `award` (
                          `award_desc` varchar(128) NOT NULL COMMENT '奖品内容描述',
                          `create_time` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
                          `update_time` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '更新时间',
-                         PRIMARY KEY (`id`)
+                         PRIMARY KEY (`id`),
+                         UNIQUE KEY `uq_award_id` (`award_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT='奖品表';
 
 LOCK TABLES `award` WRITE;
@@ -55,6 +56,36 @@ VALUES
     (10,100,'user_credit_blacklist','1','黑名单积分','2024-01-06 12:30:40','2024-01-06 12:30:46');
 
 /*!40000 ALTER TABLE `award` ENABLE KEYS */;
+UNLOCK TABLES;
+
+
+# 转储表 daily_behavior_rebate
+# ------------------------------------------------------------
+
+DROP TABLE IF EXISTS `daily_behavior_rebate`;
+
+CREATE TABLE `daily_behavior_rebate` (
+                                         `id` int(11) unsigned NOT NULL AUTO_INCREMENT COMMENT '自增ID',
+                                         `behavior_type` varchar(16) NOT NULL COMMENT '行为类型（sign 签到、openai_pay 支付）',
+                                         `rebate_desc` varchar(128) NOT NULL COMMENT '返利描述',
+                                         `rebate_type` varchar(16) NOT NULL COMMENT '返利类型（sku 活动库存充值商品、integral 用户活动积分）',
+                                         `rebate_config` varchar(32) NOT NULL COMMENT '返利配置',
+                                         `state` varchar(12) NOT NULL COMMENT '状态（open 开启、close 关闭）',
+                                         `create_time` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
+                                         `update_time` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '更新时间',
+                                         PRIMARY KEY (`id`),
+                                         KEY `idx_behavior_type` (`behavior_type`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT='日常行为返利活动配置';
+
+LOCK TABLES `daily_behavior_rebate` WRITE;
+/*!40000 ALTER TABLE `daily_behavior_rebate` DISABLE KEYS */;
+
+INSERT INTO `daily_behavior_rebate` (`id`, `behavior_type`, `rebate_desc`, `rebate_type`, `rebate_config`, `state`, `create_time`, `update_time`)
+VALUES
+    (1,'sign','签到返利-sku额度','sku','9011','close','2024-04-30 09:32:46','2024-06-01 14:00:42'),
+    (2,'sign','签到返利-积分','integral','10','open','2024-04-30 09:32:46','2024-04-30 18:05:27');
+
+/*!40000 ALTER TABLE `daily_behavior_rebate` ENABLE KEYS */;
 UNLOCK TABLES;
 
 
@@ -114,7 +145,7 @@ LOCK TABLES `raffle_activity_count` WRITE;
 
 INSERT INTO `raffle_activity_count` (`id`, `activity_count_id`, `total_count`, `day_count`, `month_count`, `create_time`, `update_time`)
 VALUES
-    (1,11101,1,1,1,'2024-03-09 10:15:42','2024-03-16 12:30:54');
+    (1,11101,100,100,100,'2024-03-09 10:15:42','2024-05-04 13:06:45');
 
 /*!40000 ALTER TABLE `raffle_activity_count` ENABLE KEYS */;
 UNLOCK TABLES;
@@ -132,6 +163,7 @@ CREATE TABLE `raffle_activity_sku` (
                                        `activity_count_id` bigint(12) NOT NULL COMMENT '活动个人参与次数ID',
                                        `stock_count` int(11) NOT NULL COMMENT '商品库存',
                                        `stock_count_surplus` int(11) NOT NULL COMMENT '剩余库存',
+                                       `product_amount` decimal(10,2) NOT NULL COMMENT '商品金额【积分】',
                                        `create_time` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
                                        `update_time` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '更新时间',
                                        PRIMARY KEY (`id`),
@@ -142,9 +174,9 @@ CREATE TABLE `raffle_activity_sku` (
 LOCK TABLES `raffle_activity_sku` WRITE;
 /*!40000 ALTER TABLE `raffle_activity_sku` DISABLE KEYS */;
 
-INSERT INTO `raffle_activity_sku` (`id`, `sku`, `activity_id`, `activity_count_id`, `stock_count`, `stock_count_surplus`, `create_time`, `update_time`)
+INSERT INTO `raffle_activity_sku` (`id`, `sku`, `activity_id`, `activity_count_id`, `stock_count`, `stock_count_surplus`, `product_amount`, `create_time`, `update_time`)
 VALUES
-    (1,9011,100301,11101,20,19,'2024-03-16 11:41:09','2024-04-05 15:57:50');
+    (1,9011,100301,11101,100000,99888,1.68,'2024-03-16 11:41:09','2024-06-15 11:20:40');
 
 /*!40000 ALTER TABLE `raffle_activity_sku` ENABLE KEYS */;
 UNLOCK TABLES;
@@ -174,7 +206,8 @@ INSERT INTO `rule_tree` (`id`, `tree_id`, `tree_name`, `tree_desc`, `tree_node_r
 VALUES
     (1,'tree_lock_1','规则树','规则树','rule_lock','2024-01-27 10:01:59','2024-02-15 07:49:59'),
     (2,'tree_luck_award','规则树-兜底奖励','规则树-兜底奖励','rule_stock','2024-02-15 07:35:06','2024-02-15 07:50:20'),
-    (3,'tree_lock_2','规则树','规则树','rule_lock','2024-01-27 10:01:59','2024-02-15 07:49:59');
+    (3,'tree_lock_2','规则树','规则树','rule_lock','2024-01-27 10:01:59','2024-02-15 07:49:59'),
+    (4,'tree_lock_3','规则树','规则树','rule_lock','2024-01-27 10:01:59','2024-02-15 07:49:59');
 
 /*!40000 ALTER TABLE `rule_tree` ENABLE KEYS */;
 UNLOCK TABLES;
@@ -208,7 +241,10 @@ VALUES
     (5,'tree_luck_award','rule_luck_award','兜底奖品随机积分','101:1,100','2024-02-15 07:35:55','2024-02-15 07:39:23'),
     (6,'tree_lock_2','rule_lock','限定用户已完成N次抽奖后解锁','2','2024-01-27 10:03:09','2024-02-15 07:52:20'),
     (7,'tree_lock_2','rule_luck_award','兜底奖品随机积分','101:1,100','2024-01-27 10:03:09','2024-02-08 19:59:43'),
-    (8,'tree_lock_2','rule_stock','库存扣减规则',NULL,'2024-01-27 10:04:43','2024-02-03 10:40:21');
+    (8,'tree_lock_2','rule_stock','库存扣减规则',NULL,'2024-01-27 10:04:43','2024-02-03 10:40:21'),
+    (9,'tree_lock_3','rule_lock','限定用户已完成N次抽奖后解锁','3','2024-01-27 10:03:09','2024-04-27 13:06:45'),
+    (10,'tree_lock_3','rule_luck_award','兜底奖品随机积分','101:1,100','2024-01-27 10:03:09','2024-04-27 13:06:53'),
+    (11,'tree_lock_3','rule_stock','库存扣减规则',NULL,'2024-01-27 10:04:43','2024-02-03 10:40:21');
 
 /*!40000 ALTER TABLE `rule_tree_node` ENABLE KEYS */;
 UNLOCK TABLES;
@@ -242,7 +278,10 @@ VALUES
     (4,'tree_luck_award','rule_stock','rule_luck_award','EQUAL','ALLOW','2024-02-15 07:37:31','2024-02-15 07:39:28'),
     (5,'tree_lock_2','rule_lock','rule_stock','EQUAL','ALLOW','0000-00-00 00:00:00','2024-02-15 07:55:08'),
     (6,'tree_lock_2','rule_lock','rule_luck_award','EQUAL','TAKE_OVER','0000-00-00 00:00:00','2024-02-15 07:55:11'),
-    (7,'tree_lock_2','rule_stock','rule_luck_award','EQUAL','ALLOW','0000-00-00 00:00:00','2024-02-15 07:55:13');
+    (7,'tree_lock_2','rule_stock','rule_luck_award','EQUAL','ALLOW','0000-00-00 00:00:00','2024-02-15 07:55:13'),
+    (8,'tree_lock_3','rule_lock','rule_luck_award','EQUAL','ALLOW','0000-00-00 00:00:00','2024-04-27 13:07:39'),
+    (9,'tree_lock_3','rule_lock','rule_luck_award','EQUAL','TAKE_OVER','0000-00-00 00:00:00','2024-02-15 07:55:11'),
+    (10,'tree_lock_3','rule_stock','rule_luck_award','EQUAL','ALLOW','0000-00-00 00:00:00','2024-02-15 07:55:13');
 
 /*!40000 ALTER TABLE `rule_tree_node_line` ENABLE KEYS */;
 UNLOCK TABLES;
@@ -274,7 +313,7 @@ VALUES
     (3,100002,'抽奖策略-非完整1概率',NULL,'2023-12-09 09:37:19','2024-02-03 10:14:17'),
     (4,100004,'抽奖策略-随机抽奖',NULL,'2023-12-09 09:37:19','2024-01-20 19:21:03'),
     (5,100005,'抽奖策略-测试概率计算',NULL,'2023-12-09 09:37:19','2024-01-21 21:54:58'),
-    (6,100006,'抽奖策略-规则树',NULL,'2024-02-03 09:53:40','2024-02-03 09:53:40');
+    (6,100006,'抽奖策略-规则树','rule_blacklist,rule_weight','2024-02-03 09:53:40','2024-05-03 09:02:38');
 
 /*!40000 ALTER TABLE `strategy` ENABLE KEYS */;
 UNLOCK TABLES;
@@ -328,14 +367,14 @@ VALUES
     (19,100005,103,'随机积分',NULL,80000,80000,0.0300,'tree_luck_award',1,'2023-12-09 09:38:31','2024-02-15 07:42:50'),
     (20,100005,104,'随机积分',NULL,80000,80000,0.0300,'tree_luck_award',1,'2023-12-09 09:38:31','2024-02-15 07:42:51'),
     (21,100005,105,'随机积分',NULL,80000,80000,0.0010,'tree_luck_award',1,'2023-12-09 09:38:31','2024-02-15 07:42:52'),
-    (22,100006,101,'随机积分',NULL,100,62,0.0200,'tree_luck_award',1,'2023-12-09 09:38:31','2024-04-13 15:25:21'),
-    (23,100006,102,'7等奖',NULL,100,21,0.0300,'tree_luck_award',2,'2023-12-09 09:38:31','2024-04-13 15:25:18'),
-    (24,100006,103,'6等奖',NULL,100,44,0.0300,'tree_luck_award',3,'2023-12-09 09:38:31','2024-04-13 12:18:32'),
-    (25,100006,104,'5等奖',NULL,100,39,0.0300,'tree_luck_award',4,'2023-12-09 09:38:31','2024-04-13 15:25:10'),
-    (26,100006,105,'4等奖',NULL,100,39,0.0300,'tree_luck_award',5,'2023-12-09 09:38:31','2024-04-13 12:20:30'),
-    (27,100006,106,'3等奖','抽奖1次后解锁',100,28,0.0300,'tree_lock_1',6,'2023-12-09 09:38:31','2024-04-13 12:20:40'),
-    (28,100006,107,'2等奖','抽奖1次后解锁',100,26,0.0300,'tree_lock_1',7,'2023-12-09 09:38:31','2024-04-13 15:25:25'),
-    (29,100006,108,'1等奖','抽奖2次后解锁',100,34,0.0300,'tree_lock_2',8,'2023-12-09 09:38:31','2024-04-13 11:42:40');
+    (22,100006,101,'随机积分',NULL,100,57,0.0200,'tree_luck_award',1,'2023-12-09 09:38:31','2024-05-04 15:37:00'),
+    (23,100006,102,'OpenAI会员卡',NULL,100,16,0.0300,'tree_luck_award',2,'2023-12-09 09:38:31','2024-06-10 09:36:25'),
+    (24,100006,103,'支付优惠券',NULL,100,39,0.0300,'tree_luck_award',3,'2023-12-09 09:38:31','2024-06-10 09:32:00'),
+    (25,100006,104,'小米台灯',NULL,100,30,0.0300,'tree_luck_award',4,'2023-12-09 09:38:31','2024-06-10 09:35:30'),
+    (26,100006,105,'小米su7周体验','抽奖3次后解锁',100,38,0.0300,'tree_lock_3',5,'2023-12-09 09:38:31','2024-04-27 13:08:16'),
+    (27,100006,106,'轻奢办公椅','抽奖2次后解锁',100,23,0.0300,'tree_lock_2',6,'2023-12-09 09:38:31','2024-05-04 15:31:45'),
+    (28,100006,107,'小霸王游戏机','抽奖1次后解锁',100,22,0.0300,'tree_lock_1',7,'2023-12-09 09:38:31','2024-05-04 15:31:55'),
+    (29,100006,108,'暴走玩偶',NULL,100,27,0.0300,'tree_luck_award',8,'2023-12-09 09:38:31','2024-05-04 15:37:05');
 
 /*!40000 ALTER TABLE `strategy_award` ENABLE KEYS */;
 UNLOCK TABLES;
@@ -357,6 +396,7 @@ CREATE TABLE `strategy_rule` (
                                  `create_time` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
                                  `update_time` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '更新时间',
                                  PRIMARY KEY (`id`),
+                                 UNIQUE KEY `uq_strategy_id_rule_model` (`strategy_id`,`rule_model`),
                                  KEY `idx_strategy_id_award_id` (`strategy_id`,`award_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT='抽奖策略规则';
 
@@ -365,8 +405,10 @@ LOCK TABLES `strategy_rule` WRITE;
 
 INSERT INTO `strategy_rule` (`id`, `strategy_id`, `award_id`, `rule_type`, `rule_model`, `rule_value`, `rule_desc`, `create_time`, `update_time`)
 VALUES
-    (13,100001,NULL,1,'rule_weight','4000:102,103,104,105 5000:102,103,104,105,106,107 6000:102,103,104,105,106,107,108,109','消耗6000分，必中奖范围','2023-12-09 10:30:43','2023-12-31 14:51:50'),
-    (14,100001,NULL,1,'rule_blacklist','101:user001,user002,user003','黑名单抽奖，积分兜底','2023-12-09 12:59:45','2024-02-14 18:16:20');
+    (13,100001,NULL,1,'rule_weight','60:102,103,104,105 200:106,107 1000:105','消耗6000分，必中奖范围','2023-12-09 10:30:43','2024-05-04 12:44:47'),
+    (14,100001,NULL,1,'rule_blacklist','101:user001,user002,user003','黑名单抽奖，积分兜底','2023-12-09 12:59:45','2024-02-14 18:16:20'),
+    (15,100006,NULL,1,'rule_weight','10:102,103 70:106,107 1000:104,105','消耗6000分，必中奖范围','2023-12-09 10:30:43','2024-05-04 15:41:16'),
+    (16,100006,NULL,1,'rule_blacklist','101:user001,user002,user003','黑名单抽奖，积分兜底','2023-12-09 12:59:45','2024-02-14 18:16:20');
 
 /*!40000 ALTER TABLE `strategy_rule` ENABLE KEYS */;
 UNLOCK TABLES;
